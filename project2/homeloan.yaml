@@ -1,0 +1,41 @@
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "nginx-team6"
+  namespace: "default"
+  labels:
+    app: "nginx-team6"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "nginx-team6"
+  template:
+    metadata:
+      labels:
+        app: "nginx-team6"
+    spec:
+      containers:
+      - name: "homeloan-sha256-1"
+        image: "gcr.io/cap1-339903/github.com/akanksha3452/homeloan@sha256:15349b415e1aa5bd7fac3e0da75dae0a01093ba89a177ed37b0692354a0d67b6"
+---
+apiVersion: "autoscaling/v2beta1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "nginx-team6-hpa-giae"
+  namespace: "default"
+  labels:
+    app: "nginx-team6"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "nginx-team6"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      targetAverageUtilization: 80

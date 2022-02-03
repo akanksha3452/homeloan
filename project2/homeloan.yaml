@@ -1,41 +1,197 @@
----
-apiVersion: "apps/v1"
-kind: "Deployment"
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: "nginx-team6"
-  namespace: "default"
+  annotations:
+    deployment.kubernetes.io/revision: "2"
+    gcb-build-id: 5c2ffbbc-cc70-4960-9974-2261e272ec6c
+    gcb-trigger-id: 597d5c25-d63e-4034-ac35-b27d4e3f148f
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"gcb-build-id":"5c2ffbbc-cc70-4960-9974-2261e272ec6c","gcb-trigger-id":"597d5c25-d63e-4034-ac35-b27d4e3f148f"},"labels":{"app":"nginx-team6","app.kubernetes.io/managed-by":"gcp-cloud-build-deploy","app.kubernetes.io/name":"nginx-team6","app.kubernetes.io/version":"25449156af4e073bb18c7bd549cc22e58d12dca2"},"name":"nginx-team6","namespace":"default"},"spec":{"replicas":3,"selector":{"matchLabels":{"app":"nginx-team6"}},"template":{"metadata":{"annotations":{"gcb-build-id":"5c2ffbbc-cc70-4960-9974-2261e272ec6c","gcb-trigger-id":"597d5c25-d63e-4034-ac35-b27d4e3f148f"},"labels":{"app":"nginx-team6","app.kubernetes.io/managed-by":"gcp-cloud-build-deploy","app.kubernetes.io/name":"nginx-team6","app.kubernetes.io/version":"25449156af4e073bb18c7bd549cc22e58d12dca2"}},"spec":{"containers":[{"image":"gcr.io/cap1-339903/github.com/akanksha3452/homeloan@sha256:142a2e7b3b357c4ea7a22e62decc1b2b6945158d57f8808c1f92f5769dbd3cf5","name":"homeloan-sha256-1"}]}}}}
+  creationTimestamp: "2022-02-03T09:33:08Z"
+  generation: 2
   labels:
-    app: "nginx-team6"
+    app: nginx-team6
+    app.kubernetes.io/managed-by: gcp-cloud-build-deploy
+    app.kubernetes.io/name: nginx-team6
+    app.kubernetes.io/version: 25449156af4e073bb18c7bd549cc22e58d12dca2
+  managedFields:
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        f:progressDeadlineSeconds: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector: {}
+        f:strategy:
+          f:rollingUpdate:
+            .: {}
+            f:maxSurge: {}
+            f:maxUnavailable: {}
+          f:type: {}
+        f:template:
+          f:metadata:
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            f:containers:
+              k:{"name":"homeloan-sha256-1"}:
+                .: {}
+                f:env:
+                  .: {}
+                  k:{"name":"server"}:
+                    .: {}
+                    f:name: {}
+                    f:valueFrom:
+                      .: {}
+                      f:configMapKeyRef:
+                        .: {}
+                        f:key: {}
+                        f:name: {}
+                f:imagePullPolicy: {}
+                f:name: {}
+                f:resources: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+            f:dnsPolicy: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:terminationGracePeriodSeconds: {}
+    manager: GoogleCloudConsole
+    operation: Update
+    time: "2022-02-03T09:33:08Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:gcb-build-id: {}
+          f:gcb-trigger-id: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+        f:labels:
+          f:app.kubernetes.io/managed-by: {}
+          f:app.kubernetes.io/name: {}
+          f:app.kubernetes.io/version: {}
+      f:spec:
+        f:template:
+          f:metadata:
+            f:annotations:
+              .: {}
+              f:gcb-build-id: {}
+              f:gcb-trigger-id: {}
+            f:labels:
+              f:app.kubernetes.io/managed-by: {}
+              f:app.kubernetes.io/name: {}
+              f:app.kubernetes.io/version: {}
+          f:spec:
+            f:containers:
+              k:{"name":"homeloan-sha256-1"}:
+                f:image: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2022-02-03T09:48:34Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:deployment.kubernetes.io/revision: {}
+      f:status:
+        f:availableReplicas: {}
+        f:conditions:
+          .: {}
+          k:{"type":"Available"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Progressing"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:updatedReplicas: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2022-02-03T09:48:40Z"
+  name: nginx-team6
+  namespace: default
+  resourceVersion: "1236377"
+  uid: 4a589ebb-fe8f-45df-99ca-fa694e2b50c6
 spec:
+  progressDeadlineSeconds: 600
   replicas: 3
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: "nginx-team6"
+      app: nginx-team6
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     metadata:
+      annotations:
+        gcb-build-id: 5c2ffbbc-cc70-4960-9974-2261e272ec6c
+        gcb-trigger-id: 597d5c25-d63e-4034-ac35-b27d4e3f148f
+      creationTimestamp: null
       labels:
-        app: "nginx-team6"
+        app: nginx-team6
+        app.kubernetes.io/managed-by: gcp-cloud-build-deploy
+        app.kubernetes.io/name: nginx-team6
+        app.kubernetes.io/version: 25449156af4e073bb18c7bd549cc22e58d12dca2
     spec:
       containers:
-      - name: "homeloan-sha256-1"
-        image: "gcr.io/cap1-339903/github.com/akanksha3452/homeloan@sha256:15349b415e1aa5bd7fac3e0da75dae0a01093ba89a177ed37b0692354a0d67b6"
----
-apiVersion: "autoscaling/v2beta1"
-kind: "HorizontalPodAutoscaler"
-metadata:
-  name: "nginx-team6-hpa-giae"
-  namespace: "default"
-  labels:
-    app: "nginx-team6"
-spec:
-  scaleTargetRef:
-    kind: "Deployment"
-    name: "nginx-team6"
-    apiVersion: "apps/v1"
-  minReplicas: 1
-  maxReplicas: 5
-  metrics:
-  - type: "Resource"
-    resource:
-      name: "cpu"
-      targetAverageUtilization: 80
+      - env:
+        - name: server
+          valueFrom:
+            configMapKeyRef:
+              key: server
+              name: nginx-team6-config-x0o1
+        image: gcr.io/cap1-339903/github.com/akanksha3452/homeloan@sha256:142a2e7b3b357c4ea7a22e62decc1b2b6945158d57f8808c1f92f5769dbd3cf5
+        imagePullPolicy: IfNotPresent
+        name: homeloan-sha256-1
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2022-02-03T09:33:11Z"
+    lastUpdateTime: "2022-02-03T09:33:11Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-02-03T09:33:08Z"
+    lastUpdateTime: "2022-02-03T09:48:40Z"
+    message: ReplicaSet "nginx-team6-5d4c957f5f" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 2
+  readyReplicas: 3
+  replicas: 1
+  updatedReplicas: 3
